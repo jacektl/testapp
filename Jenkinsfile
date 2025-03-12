@@ -17,7 +17,7 @@ pipeline {
                     usernameVariable: 'DOCKER_USERNAME',
                     passwordVariable: 'DOCKER_PASSWORD']]) {
                     // Build the Docker image
-                    sh "docker build -t laterna:v3 ."
+                    sh "docker build . -t laterna:v3 -f subfolder/Dockerfile"
                     sh "docker tag laterna:v3 jtlaga/laterna:v3"
                     sh "docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD"
                     sh "docker push jtlaga/laterna:v3"
