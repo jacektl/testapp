@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('SCM') {
             steps {
-                git changelog: false, poll: false, url: 'https://github.com/jacektl/testapp.git'
+                git branch: 'main', url: 'https://github.com/jacektl/testapp'
             }
         }
 
@@ -31,7 +31,7 @@ pipeline {
             // Pull the Docker image from Docker Hub
             sh 'docker pull jtlaga/laterna:v3'
 
-            // Run the Docker image locally
+            // Run the Docker i ge locally
             sh 'docker run -d -p 9091:80 jtlaga/laterna:v3'
             }
         }
